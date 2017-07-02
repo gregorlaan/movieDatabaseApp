@@ -5,7 +5,7 @@
     <div class="modal-window" v-if="modalBox">
         <h2>Modal</h2>
         <h2>{{ this.id }}</h2>
-        <button @click="modalBox = false">Close</button>
+        <a class="close" @click="modalBox = false">X</a>
         <ul id="videos">
             <li v-for="video in this.videos">
                 <iframe :src="'https://www.youtube.com/embed/' + video.key" frameborder="0" allowfullscreen></iframe>
@@ -81,11 +81,22 @@
         margin: 10px;
         padding: 0;
     }
+    .modal-window ul#videos li {
+        text-align: center;
+    }
     .modal-window ul#videos li iframe {
         width: 100%;
+        max-width: 900px;
         height: 500px;
+        padding: 20px;
     }
-
+    .modal-window a.close {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        color: white;
+        font-size: 32px;
+    }
 </style>
 
 <script>
