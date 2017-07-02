@@ -5,7 +5,7 @@
     <div class="modal-window" v-if="modalBox">
         <h2>Modal</h2>
         <h2>{{ this.id }}</h2>
-        <a class="close" @click="modalBox = false">X</a>
+        <a class="close" @click="modalBox = false"><i class="fa fa-times" aria-hidden="true"></i></a>
         <ul id="videos">
             <li v-for="video in this.videos">
                 <iframe :src="'https://www.youtube.com/embed/' + video.key" frameborder="0" allowfullscreen></iframe>
