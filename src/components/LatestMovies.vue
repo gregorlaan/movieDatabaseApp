@@ -3,8 +3,6 @@
     <h1 class="page-title">Latest Movies</h1>
 
     <div class="modal-window" v-if="modalBox">
-        <h2>Modal</h2>
-        <h2>{{ this.id }}</h2>
         <a class="close" @click="modalBox = false"><i class="fa fa-times" aria-hidden="true"></i></a>
         <ul id="videos">
             <li v-for="video in this.videos">
@@ -96,6 +94,9 @@
         right: 30px;
         color: white;
         font-size: 32px;
+    }
+    .modal-window a.close:hover {
+        opacity: .8;
     }
 </style>
 
