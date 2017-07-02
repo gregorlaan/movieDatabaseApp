@@ -22,7 +22,7 @@
                 <p>Popularity: {{ movie.popularity }} / 100</p>
                 <p>Description: {{ movie.overview }}</p>
                 <p>Relase date: {{ movie.release_date }}</p>
-                <p><button @click="getVideos(movie.id)">videos</button></p>
+                <a class="open" @click="getVideos(movie.id)"><i class="fa fa-film" aria-hidden="true"></i></a>
             </div>
         </li>
     </ul>
@@ -94,9 +94,15 @@
         right: 30px;
         color: white;
         font-size: 32px;
+        cursor: pointer;
     }
-    .modal-window a.close:hover {
+    .modal-window a.close:hover,
+    a.open:hover {
         opacity: .8;
+    }
+    a.open {
+        font-size: 30px;
+        cursor: pointer;
     }
 </style>
 
