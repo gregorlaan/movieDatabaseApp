@@ -18,7 +18,7 @@
             </div>
             <div class="container">
                 <h2>{{ movie.title }}</h2>
-                <p>Rating: {{ movie.vote_average }} / 10</p>
+                <p>{{ movie.vote_average }} <i class="fa fa-star" aria-hidden="true"></i></p>
                 <p>Popularity: {{ movie.popularity }} / 100</p>
                 <p>Description: {{ movie.overview }}</p>
                 <p>Relase date: {{ movie.release_date }}</p>
