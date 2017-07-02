@@ -1,6 +1,13 @@
 <template>
   <div>
-      Latest Movies
+    <h1>Latest Movies</h1>
+
+    <ol>
+        <li v-for="movie in latestMovies">
+            {{ movie.title }}
+        </li>
+    </ol>
+
   </div>
 </template>
 
@@ -9,7 +16,7 @@ export default {
 
     data() {
         return {
-
+            latestMovies: {}
         }
     },
     mounted:function(){
@@ -23,8 +30,7 @@ export default {
             }).then(function (response) {
                 // success callback
                 var data = response.body;
-                console.log(data);
-
+                this.latestMovies = data.results;
             }, function (response) {
                 // error callback
             });
