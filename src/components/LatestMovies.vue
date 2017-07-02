@@ -4,7 +4,11 @@
 
     <ol>
         <li v-for="movie in latestMovies">
-            {{ movie.title }}
+            <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" />
+            <h2>{{ movie.title }}</h2>
+            <p>Rating: {{ movie.vote_average }} / 10</p>
+            <p>Popularity: {{ movie.popularity }} / 100</p>
+            <p>Description: {{ movie.overview }}</p>
         </li>
     </ol>
 
