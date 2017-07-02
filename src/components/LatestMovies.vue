@@ -12,6 +12,9 @@ export default {
 
         }
     },
+    mounted:function(){
+        this.getData();
+    },
     methods: {
         getData: function() {
             this.$http({
