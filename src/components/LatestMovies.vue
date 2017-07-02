@@ -7,6 +7,11 @@
 <script>
 export default {
 
+    data() {
+        return {
+
+        }
+    },
     methods: {
         getData: function() {
             this.$http({
