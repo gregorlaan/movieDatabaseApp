@@ -6,7 +6,7 @@
     </div>
       <router-view></router-view>
     <footer>
-      <span>Copyright © 2017 Gregor Laan. All rights reserved.</span>
+      <span>Copyright © {{ new Date().getFullYear() }} Gregor Laan. All rights reserved.</span>
     </footer>
   </div>
 </template>
