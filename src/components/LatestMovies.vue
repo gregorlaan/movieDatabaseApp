@@ -19,7 +19,6 @@
             <div class="container">
                 <h2>{{ movie.title }}</h2>
                 <p>{{ movie.vote_average }} <i class="fa fa-star" aria-hidden="true"></i></p>
-                <p>Popularity: {{ movie.popularity }} / 100</p>
                 <p>Description: {{ movie.overview }}</p>
                 <p>Relase date: {{ movie.release_date }}</p>
                 <a class="open" @click="getVideos(movie.id)"><i class="fa fa-film" aria-hidden="true"></i></a>
