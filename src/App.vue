@@ -1,8 +1,8 @@
 <template>
   <div id="app">
   <div id="main-menu">
-    <router-link to="/">Home</router-link>
-    <router-link to="/latest">Latest</router-link>
+    <router-link exact to="/">Home</router-link>
+    <router-link exact to="/latest">Latest</router-link>
   </div>
     <router-view></router-view>
   </div>
@@ -38,11 +38,23 @@ export default {
   #main-menu {
     background: #fc0;
     margin: 35px;
+    box-shadow: 0 0 5px #ddd;
   }
   #main-menu a {
     color: white;
     padding: 10px 20px;
     display: inline-block;
     text-decoration: none;
+    position: relative;
+  }
+  #main-menu a.active:after {
+    content: '';
+    background: rgba(0, 0, 0, 0.15);
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 </style>
