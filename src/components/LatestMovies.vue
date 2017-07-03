@@ -62,7 +62,7 @@
         transform: scale(1.1);    
     }
     ul#latest-movies li .container {
-        padding: 20px;
+        padding: 0 20px;
     }
     .modal-window {
         position: fixed;
