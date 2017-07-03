@@ -21,7 +21,7 @@
                 <div class="movie-rating" title="Out of 10" v-html="movieRating(movie.vote_average)"></div>
                 <p>Description: {{ movie.overview }}</p>
                 <p>Relase date: {{ movie.release_date }}</p>
-                <a class="open" @click="getVideos(movie.id)"><i class="fa fa-film" aria-hidden="true"></i></a>
+                <a class="open" @click="getVideos(movie.id)" title="Watch videos"><i class="fa fa-film" aria-hidden="true"></i></a>
             </div>
         </li>
     </ul>
