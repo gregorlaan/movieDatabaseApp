@@ -1,10 +1,13 @@
 <template>
   <div id="app">
-  <div id="main-menu">
-    <router-link exact to="/">Home</router-link>
-    <router-link exact to="/latest">Latest</router-link>
-  </div>
-    <router-view></router-view>
+    <div id="main-menu">
+      <router-link exact to="/">Home</router-link>
+      <router-link exact to="/latest">Latest</router-link>
+    </div>
+      <router-view></router-view>
+    <footer>
+      <span>Copyright © 2017 Gregor Laan. All rights reserved.</span>
+    </footer>
   </div>
 </template>
 
@@ -56,5 +59,12 @@ export default {
     bottom: 0;
     left: 0;
     right: 0;
+  }
+  footer {
+    text-align: center;
+    background: white;
+    box-shadow: 0 0 5px #ddd;
+    margin: 35px;
+    padding: 15px 10px;
   }
 </style>
