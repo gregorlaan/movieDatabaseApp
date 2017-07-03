@@ -18,7 +18,7 @@
             </div>
             <div class="container">
                 <h2>{{ movie.title }}</h2>
-                <p>{{ movie.vote_average }} <i class="fa fa-star" aria-hidden="true"></i></p>
+                <div class="movie-rating" title="Out of 10" v-html="movieRating(movie.vote_average)"></div>
                 <p>Description: {{ movie.overview }}</p>
                 <p>Relase date: {{ movie.release_date }}</p>
                 <a class="open" @click="getVideos(movie.id)"><i class="fa fa-film" aria-hidden="true"></i></a>
@@ -103,6 +103,10 @@
         font-size: 30px;
         cursor: pointer;
     }
+    .movie-rating i {
+        font-size: 18px;
+        color: #fc0;
+    }
 </style>
 
 <script>
@@ -151,6 +155,13 @@ export default {
             this.videos = videos;
             console.log(videos);
             console.log("last step");
+        },
+        movieRating: function(rating){
+            if ( rating === 0 ) {
+                return "No rating available";
+            } else {
+                return rating + ' <i class="fa fa-star" aria-hidden="true"></i>';
+            }
         }
     }
 
