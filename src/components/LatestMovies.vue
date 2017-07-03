@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1 class="page-title">Latest Movies</h1>
 
     <div class="modal-window" v-if="modalBox">
         <a class="close" @click="modalBox = false"><i class="fa fa-times" aria-hidden="true"></i></a>
