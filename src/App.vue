@@ -1,7 +1,9 @@
 <template>
   <div id="app">
+  <div id="main-menu">
     <router-link to="/">Home</router-link>
     <router-link to="/latest">Latest</router-link>
+  </div>
     <router-view></router-view>
   </div>
 </template>
@@ -32,5 +34,15 @@ export default {
     -o-box-sizing: border-box;
     box-sizing: border-box;
 
+  }
+  #main-menu {
+    background: #fc0;
+    margin: 35px;
+  }
+  #main-menu a {
+    color: white;
+    padding: 10px 20px;
+    display: inline-block;
+    text-decoration: none;
   }
 </style>
