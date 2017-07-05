@@ -7,6 +7,9 @@
             <li v-for="video in videos">
                 <iframe :src="'https://www.youtube.com/embed/' + video.key" frameborder="0" allowfullscreen></iframe>
             </li>
+            <li v-if="this.videos.length === 0" class="no-videos">
+                No videos available
+            </li>
         </ul>
     </div>
 
@@ -81,12 +84,13 @@
         right: 0;
         bottom: 0;
         left: 0;
-        overflow-y: scroll;
+        overflow-y: auto;
     }
     .modal-window ul#videos {
         list-style-type: none;
-        margin: 10px;
-        padding: 0;
+        margin: 0;
+        padding: 10px;
+        height: 100%;
     }
     .modal-window ul#videos li {
         text-align: center;
@@ -130,6 +134,14 @@
         background: #fc0;
         color: white;
     }
+    .no-videos {
+    height: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+  }
 </style>
 
 <script>
