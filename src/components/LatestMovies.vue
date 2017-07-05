@@ -4,7 +4,7 @@
     <div class="modal-window" v-if="modalBox">
         <a class="close" @click="modalBox = false"><i class="fa fa-times" aria-hidden="true"></i></a>
         <ul id="videos">
-            <li v-for="video in this.videos">
+            <li v-for="video in videos">
                 <iframe :src="'https://www.youtube.com/embed/' + video.key" frameborder="0" allowfullscreen></iframe>
             </li>
         </ul>
@@ -162,8 +162,6 @@ export default {
             });
         },
         getVideos: function(id) {
-            console.log(id);
-            this.id = id;
             this.$http({
             url: 'https://api.themoviedb.org/3/movie/' + id + '/videos?api_key=a648c1e2f660e4faa6619ab957405dcf', 
             method: 'GET'
@@ -171,16 +169,11 @@ export default {
                 // success callback
                 var data = response.body;
                 var videos = data.results;
-                this.processVideos(videos)
+                this.videos = videos;
             }, function (response) {
                 // error callback
             });
             this.modalBox =! this.modalBox;
-        },
-        processVideos: function(videos) {
-            this.videos = videos;
-            console.log(videos);
-            console.log("last step");
         },
         movieRating: function(rating){
             if ( rating === 0 ) {
