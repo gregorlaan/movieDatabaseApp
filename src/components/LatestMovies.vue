@@ -13,7 +13,7 @@
     <ul id="latest-movies">
         <li v-for="movie in latestMovies">
             <div class="img-container">
-                <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" />
+                <img :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" />
             </div>
             <div class="container">
                 <h2>{{ movie.title }}</h2>
@@ -23,6 +23,17 @@
                 <a class="open" @click="getVideos(movie.id)" title="Watch videos"><i class="fa fa-film" aria-hidden="true"></i></a>
             </div>
         </li>
+        <ul id="pagination">
+            <li @click="setPage(currentPage - 1)" v-if="this.currentPage > 1">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </li>
+            <li v-for="page in pagination" @click="setPage(page)" :class="{current: currentPage === page}">
+                {{ page }}
+            </li>
+            <li @click="setPage(currentPage + 1)" v-if="this.currentPage < this.pagination">
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </li>
+        </ul>
     </ul>
 
   </div>
@@ -106,6 +117,19 @@
         font-size: 18px;
         color: #fc0;
     }
+    ul#pagination {
+        margin: 0;
+        text-align: center;
+    }
+    ul#pagination li {
+        display: inline-block;
+        margin: 5px;
+        padding: 5px 10px;
+    }
+    ul#pagination li.current {
+        background: #fc0;
+        color: white;
+    }
 </style>
 
 <script>
@@ -115,7 +139,9 @@ export default {
         return {
             latestMovies: {},
             modalBox: false,
-            videos: {}
+            videos: {},
+            pagination: [],
+            currentPage: 1
         }
     },
     mounted:function(){
@@ -124,11 +150,12 @@ export default {
     methods: {
         getData: function() {
             this.$http({
-            url: 'https://api.themoviedb.org/3/movie/upcoming?api_key=a648c1e2f660e4faa6619ab957405dcf', 
+            url: 'https://api.themoviedb.org/3/movie/upcoming?api_key=a648c1e2f660e4faa6619ab957405dcf&page=' + this.currentPage, 
             method: 'GET'
             }).then(function (response) {
                 // success callback
                 var data = response.body;
+                this.pagination = data.total_pages;
                 this.latestMovies = data.results;
             }, function (response) {
                 // error callback
@@ -138,7 +165,7 @@ export default {
             console.log(id);
             this.id = id;
             this.$http({
-            url: 'https://api.themoviedb.org/3/movie/' + id + '/videos?api_key=a648c1e2f660e4faa6619ab957405dcf&language=en-US', 
+            url: 'https://api.themoviedb.org/3/movie/' + id + '/videos?api_key=a648c1e2f660e4faa6619ab957405dcf', 
             method: 'GET'
             }).then(function (response) {
                 // success callback
@@ -161,6 +188,10 @@ export default {
             } else {
                 return rating + ' <i class="fa fa-star" aria-hidden="true"></i>';
             }
+        },
+        setPage: function(currentPage) {
+          this.currentPage = currentPage;
+          this.getData();
         }
     }
 
